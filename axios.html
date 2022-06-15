@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Promise4</title>
+    <title>Axios</title>
     <style>
       .box {
         border: 1px solid blue;
@@ -19,6 +19,7 @@
   </head>
   <body>
     <div class="box"></div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       const box = document.querySelector(".box");
       const data = [
@@ -34,45 +35,25 @@
         box.append(makeDiv);
       };
 
-      /*  const fnc = async () => {
-        await fetch(data[0]).then(() => {
-          mkElement("1");
-        });
-        await fetch(data[1]).then(() => {
-          mkElement("2");
-        });
-        await fetch(data[2]).then(() => {
-          mkElement("3");
-        });
-        await fetch(data[3]).then(() => {
-          mkElement("4");
-        });
-      };
-
-      fnc(); */
+      /* axios js 라이브러리 = ie 호환 크로싱 브라우징, 제이슨 자동으로 변환
+        promise와 fetch 구형 브라우저에 대한 호환성이 없다.
+        promise와 fetch는 폴리필이 안된다. 낮출 수 있는 방법이 없다. */
 
       // 즉시실행함수: (실행문)()
       (async () => {
-        await fetch(data[0]).then(() => {
+        await axios(data[0]).then(() => {
           mkElement("1");
         });
-        await fetch(data[1]).then(() => {
+        await axios(data[1]).then(() => {
           mkElement("2");
         });
-        await fetch(data[2]).then(() => {
+        await axios(data[2]).then(() => {
           mkElement("3");
         });
-        await fetch(data[3]).then(() => {
+        await axios(data[3]).then(() => {
           mkElement("4");
         });
       })();
-
-      // 새로고침할 때마다 순서가 바뀜
-      /* async await
-      await 진행중인 구문이 끝날 때까지 기다리게 하는 구문
-      감싸는 함수에서 async를 붙여야 함.
-      async 함수
-      */
     </script>
   </body>
 </html>
